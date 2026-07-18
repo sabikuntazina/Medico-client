@@ -84,18 +84,27 @@ export default function PatientDashboard() {
         credentials: "include",
         body: JSON.stringify({ symptoms: symptomsInput })
       });
-      if (response.ok) {
-        const data = await response.json();
+
+      const data = await response.json();
+
+      if (response.ok && !data.error) {
         setAiDiagnosis(data);
       } else {
-        throw new Error("AI Service failed");
+        // Show actual error from server for debugging
+        const errMsg = data.message || data.error || "AI service failed.";
+        Swal.fire({
+          icon: "error",
+          title: "AI Assistant Error",
+          html: `<p class="text-sm text-slate-600 text-left">${errMsg}</p>`,
+          confirmButtonColor: "#059669"
+        });
       }
     } catch (error) {
       console.error("AI Diagnose error:", error);
       Swal.fire({
         icon: "error",
-        title: "AI Helper Offline",
-        text: "Could not contact the Gemini AI assistant. Please try again later."
+        title: "Connection Error",
+        text: "Could not reach the server. Make sure your backend is running on port 5000."
       });
     } finally {
       setAiLoading(false);
