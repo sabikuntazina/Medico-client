@@ -123,6 +123,7 @@ export default function DoctorDetails() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       
+      // Step 1: Book the appointment
       const response = await fetch(`${apiUrl}/api/appointments/book`, {
         method: "POST",
         headers: {
@@ -145,16 +146,24 @@ export default function DoctorDetails() {
         throw new Error(resData.error || "Failed to book appointment.");
       }
 
-      await Swal.fire({
-        icon: "success",
-        title: "Slot Reserved!",
-        html: "<p>Redirecting to secure Stripe checkout...</p>",
-        timer: 1500,
-        showConfirmButton: false,
-        timerProgressBar: true
+      const appointmentId = resData.appointment._id;
+
+      // Step 2: Create Stripe Checkout Session and get the URL
+      const checkoutRes = await fetch(`${apiUrl}/api/payments/create-checkout-session`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ appointmentId })
       });
 
-      window.location.href = `/dashboard/patient/checkout/${resData.appointment._id}`;
+      const checkoutData = await checkoutRes.json();
+      if (!checkoutRes.ok) {
+        throw new Error(checkoutData.error || "Failed to create checkout session.");
+      }
+
+      // Step 3: Redirect directly to Stripe's hosted checkout page
+      window.location.href = checkoutData.url;
+
     } catch (error) {
       console.error("Booking error:", error);
       Swal.fire({
@@ -166,6 +175,7 @@ export default function DoctorDetails() {
       setBookingLoading(false);
     }
   };
+
 
   if (loading) {
     return (

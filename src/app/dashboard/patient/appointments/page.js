@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 export default function PatientAppointments() {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [payingId, setPayingId] = useState(null);
 
   const fetchAppointments = async () => {
     try {
@@ -65,6 +66,30 @@ export default function PatientAppointments() {
         }
       }
     });
+  };
+
+
+
+  const handlePayFee = async (appointmentId) => {
+    setPayingId(appointmentId);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const response = await fetch(`${apiUrl}/api/payments/create-checkout-session`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ appointmentId })
+      });
+      const data = await response.json();
+      if (response.ok && data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Failed to initiate payment.");
+      }
+    } catch (error) {
+      Swal.fire("Error", error.message, "error");
+      setPayingId(null);
+    }
   };
 
   const handleReschedule = async (id, currentDate, currentTime) => {
@@ -250,12 +275,17 @@ export default function PatientAppointments() {
                     <td className="px-6 py-4 whitespace-nowrap text-right space-x-2">
                       {app.paymentStatus === "unpaid" && (
                         <>
-                          <Link
-                            href={`/dashboard/patient/checkout/${app._id}`}
-                            className="inline-flex items-center rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 text-xs font-bold text-white transition-colors"
+                          <button
+                            onClick={() => handlePayFee(app._id)}
+                            disabled={payingId === app._id}
+                            className="inline-flex items-center rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 text-xs font-bold text-white transition-colors cursor-pointer disabled:opacity-50"
                           >
-                            <FiDollarSign className="mr-1" /> Pay Fee (${app.consultationFee})
-                          </Link>
+                            {payingId === app._id ? (
+                              <><FiLoader className="animate-spin mr-1" /> Processing...</>
+                            ) : (
+                              <><FiDollarSign className="mr-1" /> Pay Fee (${app.consultationFee})</>
+                            )}
+                          </button>
                           <button
                             onClick={() => handleReschedule(app._id, app.appointmentDate, app.appointmentTime)}
                             className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-350 transition-colors cursor-pointer"
