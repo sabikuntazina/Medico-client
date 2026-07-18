@@ -127,8 +127,8 @@ export default function DoctorDetails() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Better Auth parses cookies automatically. If needed, standard request cookies are sent.
         },
+        credentials: "include",
         body: JSON.stringify({
           doctorId: doctor._id.toString(),
           doctorName: doctor.doctorName,

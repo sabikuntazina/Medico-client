@@ -24,7 +24,9 @@ export default function PrescriptionsPanel() {
   const fetchPrescriptions = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/prescriptions/doctor`);
+      const response = await fetch(`${apiUrl}/api/prescriptions/doctor`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         setPrescriptions(data || []);
@@ -55,6 +57,7 @@ export default function PrescriptionsPanel() {
       const response = await fetch(`${apiUrl}/api/prescriptions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({
           patientId,
           appointmentId,
@@ -132,6 +135,7 @@ export default function PrescriptionsPanel() {
           const response = await fetch(`${apiUrl}/api/prescriptions/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({
               diagnosis: updatedDiag,
               medications: updatedMeds,

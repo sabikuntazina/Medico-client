@@ -15,13 +15,17 @@ export default function DoctorDashboard() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
         
         // Fetch doctor own profile
-        const profRes = await fetch(`${apiUrl}/api/doctors/my-profile`);
+        const profRes = await fetch(`${apiUrl}/api/doctors/my-profile`, {
+          credentials: "include"
+        });
         if (profRes.ok) {
           const profData = await profRes.json();
           setDoctorProfile(profData);
           
           // Fetch appointments for doctor
-          const appRes = await fetch(`${apiUrl}/api/appointments/doctor`);
+          const appRes = await fetch(`${apiUrl}/api/appointments/doctor`, {
+            credentials: "include"
+          });
           if (appRes.ok) {
             const appData = await appRes.json();
             setAppointments(appData || []);

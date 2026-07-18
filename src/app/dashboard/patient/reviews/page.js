@@ -20,14 +20,18 @@ export default function PatientReviews() {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       
       // Fetch user reviews
-      const reviewsRes = await fetch(`${apiUrl}/api/reviews/patient`);
+      const reviewsRes = await fetch(`${apiUrl}/api/reviews/patient`, {
+        credentials: "include"
+      });
       if (reviewsRes.ok) {
         const revData = await reviewsRes.json();
         setReviews(revData || []);
       }
 
       // Fetch patient's appointments (to find who they visited and paid)
-      const appRes = await fetch(`${apiUrl}/api/appointments/patient`);
+      const appRes = await fetch(`${apiUrl}/api/appointments/patient`, {
+        credentials: "include"
+      });
       if (appRes.ok) {
         const appData = await appRes.json();
         // Filter unique doctors they visited (must be paid or completed)
@@ -65,6 +69,7 @@ export default function PatientReviews() {
       const response = await fetch(`${apiUrl}/api/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({
           doctorId: selectedDoctorId,
           rating,
@@ -109,7 +114,8 @@ export default function PatientReviews() {
         try {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
           const response = await fetch(`${apiUrl}/api/reviews/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: "include"
           });
           if (response.ok) {
             Swal.fire({
@@ -173,6 +179,7 @@ export default function PatientReviews() {
           const response = await fetch(`${apiUrl}/api/reviews/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ rating: updatedRating, reviewText: updatedText })
           });
           if (response.ok) {

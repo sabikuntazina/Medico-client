@@ -11,7 +11,9 @@ export default function PatientPayments() {
     async function fetchPayments() {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-        const response = await fetch(`${apiUrl}/api/payments/patient`);
+        const response = await fetch(`${apiUrl}/api/payments/patient`, {
+          credentials: "include"
+        });
         if (response.ok) {
           const data = await response.json();
           setPayments(data || []);

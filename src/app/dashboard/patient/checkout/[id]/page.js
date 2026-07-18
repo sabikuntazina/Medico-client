@@ -27,6 +27,7 @@ export default function CheckoutPage() {
           headers: {
             "Content-Type": "application/json"
           },
+          credentials: "include",
           body: JSON.stringify({ appointmentId: id })
         });
         const resData = await response.json();

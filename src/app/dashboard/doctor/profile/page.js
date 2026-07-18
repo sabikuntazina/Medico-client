@@ -19,7 +19,9 @@ export default function DoctorProfile() {
     async function fetchProfile() {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-        const response = await fetch(`${apiUrl}/api/doctors/my-profile`);
+        const response = await fetch(`${apiUrl}/api/doctors/my-profile`, {
+          credentials: "include"
+        });
         if (response.ok) {
           const data = await response.json();
           setSpecialization(data.specialization || "Cardiology");
@@ -100,6 +102,7 @@ export default function DoctorProfile() {
       const response = await fetch(`${apiUrl}/api/doctors/profile`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(payload)
       });
 

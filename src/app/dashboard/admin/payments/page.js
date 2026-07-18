@@ -11,7 +11,9 @@ export default function AdminPayments() {
     async function fetchPayments() {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-        const response = await fetch(`${apiUrl}/api/payments/all`);
+        const response = await fetch(`${apiUrl}/api/payments/all`, {
+          credentials: "include"
+        });
         if (response.ok) {
           const data = await response.json();
           setPayments(data || []);

@@ -14,7 +14,9 @@ export default function DoctorAppointments() {
   const fetchAppointments = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/appointments/doctor`);
+      const response = await fetch(`${apiUrl}/api/appointments/doctor`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         setAppointments(data || []);
@@ -48,6 +50,7 @@ export default function DoctorAppointments() {
           const response = await fetch(`${apiUrl}/api/appointments/${id}/status`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ status })
           });
           if (response.ok) {
@@ -86,6 +89,7 @@ export default function DoctorAppointments() {
           const response = await fetch(`${apiUrl}/api/appointments/${appId}/status`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ status: "completed" })
           });
           if (response.ok) {

@@ -15,7 +15,9 @@ export default function DoctorSchedule() {
   const fetchProfile = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/doctors/my-profile`);
+      const response = await fetch(`${apiUrl}/api/doctors/my-profile`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         setProfile(data);
@@ -88,6 +90,7 @@ export default function DoctorSchedule() {
       const response = await fetch(`${apiUrl}/api/doctors/profile`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(payload)
       });
 

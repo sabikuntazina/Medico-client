@@ -11,7 +11,9 @@ export default function AdminUsers() {
   const fetchUsers = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/users/all`);
+      const response = await fetch(`${apiUrl}/api/users/all`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         setUsers(data || []);
@@ -46,6 +48,7 @@ export default function AdminUsers() {
           const response = await fetch(`${apiUrl}/api/users/${id}/suspend`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ status: nextStatus })
           });
           if (response.ok) {
@@ -82,7 +85,8 @@ export default function AdminUsers() {
         try {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
           const response = await fetch(`${apiUrl}/api/users/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: "include"
           });
           if (response.ok) {
             Swal.fire({

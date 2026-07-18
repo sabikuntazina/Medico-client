@@ -38,6 +38,7 @@ export default function CheckoutForm({ appointment, clientSecret, onCancel }) {
           headers: {
             "Content-Type": "application/json"
           },
+          credentials: "include",
           body: JSON.stringify({
             appointmentId: appointment._id,
             transactionId: paymentIntent.id

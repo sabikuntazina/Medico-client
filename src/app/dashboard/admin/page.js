@@ -31,19 +31,27 @@ export default function AdminDashboard() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
         
         // Fetch all users
-        const usersRes = await fetch(`${apiUrl}/api/users/all`);
+        const usersRes = await fetch(`${apiUrl}/api/users/all`, {
+          credentials: "include"
+        });
         const usersData = await usersRes.json();
         
         // Fetch all doctors
-        const docRes = await fetch(`${apiUrl}/api/doctors/all-admin`);
+        const docRes = await fetch(`${apiUrl}/api/doctors/all-admin`, {
+          credentials: "include"
+        });
         const docData = await docRes.json();
 
         // Fetch all appointments
-        const appRes = await fetch(`${apiUrl}/api/appointments/all`);
+        const appRes = await fetch(`${apiUrl}/api/appointments/all`, {
+          credentials: "include"
+        });
         const appData = await appRes.json();
 
         // Fetch all payments
-        const payRes = await fetch(`${apiUrl}/api/payments/all`);
+        const payRes = await fetch(`${apiUrl}/api/payments/all`, {
+          credentials: "include"
+        });
         const payData = await payRes.json();
 
         setUsers(usersData || []);

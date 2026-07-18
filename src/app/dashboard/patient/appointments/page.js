@@ -12,7 +12,9 @@ export default function PatientAppointments() {
   const fetchAppointments = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/appointments/patient`);
+      const response = await fetch(`${apiUrl}/api/appointments/patient`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         setAppointments(data || []);
@@ -42,7 +44,8 @@ export default function PatientAppointments() {
         try {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
           const response = await fetch(`${apiUrl}/api/appointments/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: "include"
           });
           if (response.ok) {
             Swal.fire({
@@ -107,6 +110,7 @@ export default function PatientAppointments() {
           const response = await fetch(`${apiUrl}/api/appointments/${id}/reschedule`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ appointmentDate, appointmentTime })
           });
           if (response.ok) {
@@ -132,7 +136,9 @@ export default function PatientAppointments() {
   const handleViewPrescription = async (appointmentId) => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/prescriptions/appointment/${appointmentId}`);
+      const response = await fetch(`${apiUrl}/api/prescriptions/appointment/${appointmentId}`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         Swal.fire({

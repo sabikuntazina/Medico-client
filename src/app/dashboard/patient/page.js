@@ -35,14 +35,18 @@ export default function PatientDashboard() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
         
         // Fetch appointments
-        const appRes = await fetch(`${apiUrl}/api/appointments/patient`);
+        const appRes = await fetch(`${apiUrl}/api/appointments/patient`, {
+          credentials: "include"
+        });
         if (appRes.ok) {
           const appData = await appRes.json();
           setAppointments(appData || []);
         }
 
         // Fetch payments
-        const payRes = await fetch(`${apiUrl}/api/payments/patient`);
+        const payRes = await fetch(`${apiUrl}/api/payments/patient`, {
+          credentials: "include"
+        });
         if (payRes.ok) {
           const payData = await payRes.json();
           setPayments(payData || []);
@@ -77,6 +81,7 @@ export default function PatientDashboard() {
         headers: {
           "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({ symptoms: symptomsInput })
       });
       if (response.ok) {

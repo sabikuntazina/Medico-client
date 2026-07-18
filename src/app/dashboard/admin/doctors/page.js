@@ -11,7 +11,9 @@ export default function AdminDoctors() {
   const fetchDoctors = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/doctors/all-admin`);
+      const response = await fetch(`${apiUrl}/api/doctors/all-admin`, {
+        credentials: "include"
+      });
       if (response.ok) {
         const data = await response.json();
         setDoctors(data || []);
@@ -47,6 +49,7 @@ export default function AdminDoctors() {
           const response = await fetch(`${apiUrl}/api/doctors/${id}/verify`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ status })
           });
           if (response.ok) {
