@@ -125,13 +125,13 @@ export default function DashboardLayout({ children }) {
 
       {/* Sidebar Drawer Container */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-40 w-64 border-r border-slate-200 dark:border-slate-850 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between transform transition-transform duration-200 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between transform transition-transform duration-200 lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex flex-col flex-grow">
           {/* Logo / Header */}
-          <div className="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-850 justify-between">
+          <div className="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-800 justify-between">
             <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-500 bg-clip-text text-transparent dark:from-emerald-400 dark:to-cyan-300">
               Medico Dashboard
             </span>
@@ -144,7 +144,7 @@ export default function DashboardLayout({ children }) {
           </div>
 
           {/* User Profile Card */}
-          <div className="p-4 border-b border-slate-100 dark:border-slate-850 flex items-center space-x-3 text-left">
+          <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center space-x-3 text-left">
             <img
               src={user.image || user.photo || `https://api.dicebear.com/7.x/adventurer/svg?seed=${user.name}`}
               alt={user.name}
@@ -169,8 +169,8 @@ export default function DashboardLayout({ children }) {
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                     isActive
-                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-650/15 dark:bg-emerald-500"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-850 dark:hover:text-white"
+                      ? "bg-emerald-600 text-white shadow-md dark:bg-emerald-500"
+                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                   }`}
                 >
                   <span className="text-lg shrink-0">{link.icon}</span>
@@ -182,17 +182,17 @@ export default function DashboardLayout({ children }) {
         </div>
 
         {/* Sidebar Footer Controls */}
-        <div className="p-4 border-t border-slate-100 dark:border-slate-850 space-y-1.5 text-left">
+        <div className="p-4 border-t border-slate-100 dark:border-slate-800 space-y-1.5 text-left">
           <Link
             href="/"
-            className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-550 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-850 transition-colors"
+            className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white transition-colors"
           >
             <FiHome className="text-base" />
             <span>Back to Home</span>
           </Link>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-bold text-red-650 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/20 transition-colors cursor-pointer"
+            className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/30 dark:hover:text-red-300 transition-colors cursor-pointer"
           >
             <FiLogOut className="text-base" />
             <span>Sign Out</span>
@@ -203,7 +203,7 @@ export default function DashboardLayout({ children }) {
       {/* Main Panel Area */}
       <div className="flex-grow lg:pl-64 min-h-screen flex flex-col">
         {/* Top Header */}
-        <header className="h-16 border-b border-slate-200 dark:border-slate-850 bg-white dark:bg-slate-900 px-6 flex items-center justify-between text-left shrink-0">
+        <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 flex items-center justify-between text-left shrink-0">
           <div className="pl-12 lg:pl-0">
             <h2 className="text-base font-bold text-slate-800 dark:text-white capitalize">
               Welcome, {user.name}!

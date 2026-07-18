@@ -145,15 +145,16 @@ export default function DoctorDetails() {
         throw new Error(resData.error || "Failed to book appointment.");
       }
 
-      Swal.fire({
+      await Swal.fire({
         icon: "success",
         title: "Slot Reserved!",
-        text: "Redirecting to secure Stripe checkout to confirm payment.",
-        timer: 2000,
-        showConfirmButton: false
+        html: "<p>Redirecting to secure Stripe checkout...</p>",
+        timer: 1500,
+        showConfirmButton: false,
+        timerProgressBar: true
       });
 
-      router.push(`/dashboard/patient/checkout/${resData.appointment._id}`);
+      window.location.href = `/dashboard/patient/checkout/${resData.appointment._id}`;
     } catch (error) {
       console.error("Booking error:", error);
       Swal.fire({
