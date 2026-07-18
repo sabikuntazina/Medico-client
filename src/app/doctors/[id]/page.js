@@ -13,7 +13,8 @@ import {
   FiBookOpen, 
   FiAlertCircle, 
   FiUser,
-  FiLoader
+  FiLoader,
+  FiMessageSquare
 } from "react-icons/fi";
 
 export default function DoctorDetails() {
