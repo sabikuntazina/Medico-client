@@ -140,7 +140,10 @@ export default function DoctorProfile() {
     <div className="space-y-6 text-left max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-black text-slate-900 dark:text-white">Professional Profile</h1>
-        <p className="text-xs text-slate-500 dark:text-slate-400">Complete your credentials to increase booking trust and verification speed.</p>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          এখানে আপনার <strong className="text-emerald-600">Visiting Fee (Consultation Fee)</strong>, hospital, specialization এবং qualifications set করুন।
+          Patients আপনার profile দেখে এই তথ্যের ভিত্তিতে appointment নেবে।
+        </p>
       </div>
 
       <form onSubmit={handleSaveProfile} className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
@@ -234,7 +237,7 @@ export default function DoctorProfile() {
           {/* Consultation Fee */}
           <div>
             <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1.5">
-              Consultation Fee (USD)
+              💰 Visiting Fee / Consultation Fee (USD per session)
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
@@ -244,12 +247,13 @@ export default function DoctorProfile() {
                 type="number"
                 value={consultationFee}
                 onChange={(e) => setConsultationFee(Number(e.target.value))}
-                placeholder="e.g. 150"
+                placeholder="e.g. 150 — প্রতি visit এ patient কত টাকা দেবে"
                 min="0"
                 className="block w-full pl-9 pr-3 py-2.5 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 required
               />
             </div>
+            <p className="text-[10px] text-slate-400 mt-1">এটাই হবে patient দের appointment payment amount (Stripe এ charge হবে)।</p>
           </div>
         </div>
 
