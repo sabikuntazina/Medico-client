@@ -30,20 +30,26 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const { data, error } = await signIn.email({
-        email,
-        password
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const response = await fetch(`${apiUrl}/api/auth/sign-in/email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
       });
+      
+      const data = await response.json();
 
-      if (error) {
-        throw new Error(error.message || "Invalid credentials.");
+      if (!response.ok || data.error) {
+        throw new Error(data.message || data.error || "Invalid credentials.");
       }
 
       // ── Save token to localStorage for cross-domain auth ──
-      const token = data?.token || data?.session?.token;
-      const user  = data?.user;
+      const token = data.token || data?.session?.token;
+      const user  = data.user;
       if (token && user) {
         saveAuthToken(token, user);
+      } else {
+        throw new Error("Login succeeded but no token received.");
       }
 
       Swal.fire({
