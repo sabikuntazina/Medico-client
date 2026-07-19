@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FiUsers, FiCalendar, FiStar, FiActivity, FiArrowRight, FiLoader } from "react-icons/fi";
+import { FiUsers, FiCalendar, FiStar, FiActivity, FiArrowRight, FiLoader, FiClock, FiSettings } from "react-icons/fi";
 
 export default function DoctorDashboard() {
   const [appointments, setAppointments] = useState([]);

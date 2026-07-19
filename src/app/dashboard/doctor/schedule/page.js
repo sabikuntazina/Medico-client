@@ -75,17 +75,9 @@ export default function DoctorSchedule() {
     setSaving(true);
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      
-      const payload = {
-        specialization: profile.specialization || "General",
-        qualifications: profile.qualifications || [],
-        experience: profile.experience || 0,
-        consultationFee: profile.consultationFee || 0,
-        hospitalName: profile.hospitalName || "General Clinic",
-        profileImage: profile.profileImage || "",
-        availableDays,
-        availableSlots
-      };
+
+      // Only send schedule fields — profile page handles the rest
+      const payload = { availableDays, availableSlots };
 
       const response = await fetch(`${apiUrl}/api/doctors/profile`, {
         method: "PUT",
