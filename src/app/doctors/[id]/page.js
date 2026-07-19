@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useSession } from "../../../lib/auth-client";
+import { useSession } from "../../../lib/auth-context";
 import Swal from "sweetalert2";
 import { 
   FiHeart, 

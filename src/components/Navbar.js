@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSession, signOut } from "../lib/auth-client";
+import { useSession } from "../lib/auth-context";
+import { signOut, clearAuthToken } from "../lib/auth-client";
 import ThemeToggle from "./ThemeToggle";
 import { FiMenu, FiX, FiUser, FiLogOut, FiLayout } from "react-icons/fi";
 import Swal from "sweetalert2";
@@ -18,7 +19,8 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      await signOut();
+      clearAuthToken();
+      await signOut().catch(() => {});
       setIsProfileOpen(false);
       Swal.fire({
         icon: "success",
