@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, saveAuthToken } from "../../lib/auth-client";
+import { useSession } from "../../lib/auth-context";
 import Swal from "sweetalert2";
 import { FiMail, FiLock, FiLoader } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
@@ -14,6 +15,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+  const { setUser } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +50,7 @@ export default function Login() {
       const user  = data.user;
       if (token && user) {
         saveAuthToken(token, user);
+        if (setUser) setUser(user); // Force React Context to update immediately
       } else {
         throw new Error("Login succeeded but no token received.");
       }

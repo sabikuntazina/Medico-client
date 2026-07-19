@@ -34,13 +34,7 @@ export default function DashboardLayout({ children }) {
   useEffect(() => {
     if (!isPending) {
       if (!session?.user) {
-        Swal.fire({
-          icon: "info",
-          title: "Session Expired",
-          text: "Please sign in to access your dashboard.",
-          timer: 2000,
-          showConfirmButton: false
-        });
+        // Silently redirect to login without showing a popup
         router.replace("/login");
       } else {
         // Protect role routes
