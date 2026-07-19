@@ -32,25 +32,25 @@ export default function AdminDashboard() {
         
         // Fetch all users
         const usersRes = await fetch(`${apiUrl}/api/users/all`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         const usersData = await usersRes.json();
         
         // Fetch all doctors
         const docRes = await fetch(`${apiUrl}/api/doctors/all-admin`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         const docData = await docRes.json();
 
         // Fetch all appointments
         const appRes = await fetch(`${apiUrl}/api/appointments/all`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         const appData = await appRes.json();
 
         // Fetch all payments
         const payRes = await fetch(`${apiUrl}/api/payments/all`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         const payData = await payRes.json();
 

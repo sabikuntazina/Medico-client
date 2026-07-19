@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "../../lib/auth-client";
+import { signIn, saveAuthToken } from "../../lib/auth-client";
 import Swal from "sweetalert2";
 import { FiMail, FiLock, FiLoader } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
@@ -39,6 +39,13 @@ export default function Login() {
         throw new Error(error.message || "Invalid credentials.");
       }
 
+      // ── Save token to localStorage for cross-domain auth ──
+      const token = data?.token || data?.session?.token;
+      const user  = data?.user;
+      if (token && user) {
+        saveAuthToken(token, user);
+      }
+
       Swal.fire({
         icon: "success",
         title: "Welcome Back!",
@@ -49,8 +56,6 @@ export default function Login() {
         position: "top-end"
       });
 
-      // Redirect based on role
-      const user = data.user;
       router.push(`/dashboard/${user.role}`);
     } catch (err) {
       console.error("Login error:", err);

@@ -19,14 +19,14 @@ export default function DoctorDashboard() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
         
         const profRes = await fetch(`${apiUrl}/api/doctors/my-profile`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         if (profRes.ok) {
           const profData = await profRes.json();
           setDoctorProfile(profData);
           
           const appRes = await fetch(`${apiUrl}/api/appointments/doctor`, {
-            credentials: "include"
+            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
           });
           if (appRes.ok) {
             const appData = await appRes.json();

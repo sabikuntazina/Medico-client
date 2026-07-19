@@ -12,7 +12,7 @@ export default function AdminDoctors() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       const response = await fetch(`${apiUrl}/api/doctors/all-admin`, {
-        credentials: "include"
+        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
       });
       if (response.ok) {
         const data = await response.json();
@@ -49,7 +49,7 @@ export default function AdminDoctors() {
           const response = await fetch(`${apiUrl}/api/doctors/${id}/verify`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            credentials: "include",
+            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
             body: JSON.stringify({ status })
           });
           if (response.ok) {

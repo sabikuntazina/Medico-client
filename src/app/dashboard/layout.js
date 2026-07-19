@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSession, signOut } from "../../lib/auth-client";
+import { useSession } from "../../lib/auth-context";
+import { signOut, clearAuthToken } from "../../lib/auth-client";
 import { 
   FiUser, 
   FiCalendar, 
@@ -55,7 +56,10 @@ export default function DashboardLayout({ children }) {
 
   const handleLogout = async () => {
     try {
-      await signOut();
+      // Clear localStorage token first
+      clearAuthToken();
+      // Then sign out from Better Auth (clears server cookie)
+      await signOut().catch(() => {});
       Swal.fire({
         icon: "success",
         title: "Signed Out",

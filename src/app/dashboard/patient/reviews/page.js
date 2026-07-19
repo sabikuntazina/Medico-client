@@ -21,7 +21,7 @@ export default function PatientReviews() {
       
       // Fetch user reviews
       const reviewsRes = await fetch(`${apiUrl}/api/reviews/patient`, {
-        credentials: "include"
+        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
       });
       if (reviewsRes.ok) {
         const revData = await reviewsRes.json();
@@ -30,7 +30,7 @@ export default function PatientReviews() {
 
       // Fetch patient's appointments (to find who they visited and paid)
       const appRes = await fetch(`${apiUrl}/api/appointments/patient`, {
-        credentials: "include"
+        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
       });
       if (appRes.ok) {
         const appData = await appRes.json();
@@ -69,7 +69,7 @@ export default function PatientReviews() {
       const response = await fetch(`${apiUrl}/api/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
         body: JSON.stringify({
           doctorId: selectedDoctorId,
           rating,
@@ -115,7 +115,7 @@ export default function PatientReviews() {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
           const response = await fetch(`${apiUrl}/api/reviews/${id}`, {
             method: "DELETE",
-            credentials: "include"
+            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
           });
           if (response.ok) {
             Swal.fire({
@@ -179,7 +179,7 @@ export default function PatientReviews() {
           const response = await fetch(`${apiUrl}/api/reviews/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            credentials: "include",
+            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
             body: JSON.stringify({ rating: updatedRating, reviewText: updatedText })
           });
           if (response.ok) {

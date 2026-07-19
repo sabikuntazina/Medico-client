@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useSession } from "../../../lib/auth-client";
+import { useSession } from "../../../lib/auth-context";
 import { 
   FiCalendar, 
   FiCreditCard, 
@@ -36,7 +36,7 @@ export default function PatientDashboard() {
         
         // Fetch appointments
         const appRes = await fetch(`${apiUrl}/api/appointments/patient`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         if (appRes.ok) {
           const appData = await appRes.json();
@@ -45,7 +45,7 @@ export default function PatientDashboard() {
 
         // Fetch payments
         const payRes = await fetch(`${apiUrl}/api/payments/patient`, {
-          credentials: "include"
+          credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
         });
         if (payRes.ok) {
           const payData = await payRes.json();
@@ -81,7 +81,7 @@ export default function PatientDashboard() {
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: "include",
+        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
         body: JSON.stringify({ symptoms: symptomsInput })
       });
 

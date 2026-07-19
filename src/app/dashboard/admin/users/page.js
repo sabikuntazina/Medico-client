@@ -12,7 +12,7 @@ export default function AdminUsers() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       const response = await fetch(`${apiUrl}/api/users/all`, {
-        credentials: "include"
+        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
       });
       if (response.ok) {
         const data = await response.json();
@@ -48,7 +48,7 @@ export default function AdminUsers() {
           const response = await fetch(`${apiUrl}/api/users/${id}/suspend`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            credentials: "include",
+            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
             body: JSON.stringify({ status: nextStatus })
           });
           if (response.ok) {
@@ -86,7 +86,7 @@ export default function AdminUsers() {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
           const response = await fetch(`${apiUrl}/api/users/${id}`, {
             method: "DELETE",
-            credentials: "include"
+            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
           });
           if (response.ok) {
             Swal.fire({
