@@ -59,20 +59,20 @@ export default function AdminAppointments() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                 {appointments.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="font-semibold text-slate-900 dark:text-white">{app.patientName}</div>
-                      <div className="text-[10px] text-slate-450">{app.patientEmail}</div>
+                      <div className="text-[10px] text-slate-500">{app.patientEmail}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="font-semibold text-slate-900 dark:text-white">{app.doctorName}</div>
-                      <div className="text-[10px] text-slate-450 uppercase tracking-wide font-medium">{app.specialization}</div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-wide font-medium">{app.specialization}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center text-xs text-slate-650 dark:text-slate-350">
+                      <div className="flex items-center text-xs text-slate-600 dark:text-slate-400">
                         <FiCalendar className="mr-1.5 shrink-0" /> {app.appointmentDate}
                       </div>
-                      <div className="flex items-center text-xs text-slate-650 dark:text-slate-350 mt-1">
+                      <div className="flex items-center text-xs text-slate-600 dark:text-slate-400 mt-1">
                         <FiClock className="mr-1.5 shrink-0" /> {app.appointmentTime}
                       </div>
                     </td>
@@ -90,7 +90,7 @@ export default function AdminAppointments() {
                         app.appointmentStatus === "completed"
                           ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30"
                           : app.appointmentStatus === "accepted"
-                          ? "bg-cyan-50 text-cyan-755 dark:bg-cyan-950/30"
+                          ? "bg-cyan-50 text-cyan-700 dark:bg-cyan-950/30"
                           : app.appointmentStatus === "rejected"
                           ? "bg-red-50 text-red-700 dark:bg-red-950/30"
                           : "bg-amber-50 text-amber-700 dark:bg-amber-950/30"

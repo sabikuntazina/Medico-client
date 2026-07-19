@@ -104,7 +104,7 @@ export default function AdminDoctors() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                 {doctors.map((doc) => (
-                  <tr key={doc._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                  <tr key={doc._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                     <td className="px-6 py-4 whitespace-nowrap flex items-center space-x-3">
                       <img
                         src={doc.profileImage || `https://api.dicebear.com/7.x/adventurer/svg?seed=${doc.doctorName}`}
@@ -121,12 +121,12 @@ export default function AdminDoctors() {
                         {doc.specialization || "Unset"}
                       </span>
                     </td>
-                    <td className="px-6 py-4 max-w-xs truncate text-slate-650 dark:text-slate-455">
+                    <td className="px-6 py-4 max-w-xs truncate text-slate-600 dark:text-slate-455">
                       {doc.qualifications?.join(", ") || "No credentials logged"}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-slate-650 dark:text-slate-400 text-xs">
+                    <td className="px-6 py-4 whitespace-nowrap text-slate-600 dark:text-slate-400 text-xs">
                       <div>{doc.hospitalName || "Unset"}</div>
-                      <div className="text-[10px] text-slate-450 mt-0.5">{doc.experience || 0} Years Exp</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">{doc.experience || 0} Years Exp</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <span className={`inline-block text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
@@ -134,7 +134,7 @@ export default function AdminDoctors() {
                           ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30"
                           : doc.verificationStatus === "rejected"
                           ? "bg-red-50 text-red-700 dark:bg-red-950/30"
-                          : "bg-amber-50 text-amber-705 dark:bg-amber-950/30"
+                          : "bg-amber-50 text-amber-700 dark:bg-amber-950/30"
                       }`}>
                         {doc.verificationStatus}
                       </span>
@@ -143,7 +143,7 @@ export default function AdminDoctors() {
                       {doc.verificationStatus !== "verified" && (
                         <button
                           onClick={() => handleVerifyStatus(doc._id, "verified")}
-                          className="inline-flex items-center rounded-xl bg-emerald-650 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
+                          className="inline-flex items-center rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
                         >
                           <FiCheck className="mr-1" /> Verify
                         </button>
@@ -161,7 +161,7 @@ export default function AdminDoctors() {
                       {doc.verificationStatus === "verified" && (
                         <button
                           onClick={() => handleVerifyStatus(doc._id, "pending")}
-                          className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-350 transition-colors cursor-pointer"
+                          className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
                         >
                           <FiRefreshCw className="mr-1" /> Reset Status
                         </button>

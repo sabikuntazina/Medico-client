@@ -137,7 +137,7 @@ export default function PatientDashboard() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-650 dark:text-emerald-400 rounded-xl">
+          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
             <FiCalendar className="w-6 h-6" />
           </div>
           <div>
@@ -147,7 +147,7 @@ export default function PatientDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 text-cyan-650 dark:text-cyan-400 rounded-xl">
+          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-400 rounded-xl">
             <FiClock className="w-6 h-6" />
           </div>
           <div>
@@ -157,7 +157,7 @@ export default function PatientDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-indigo-50 dark:bg-indigo-950/30 text-indigo-650 dark:text-indigo-400 rounded-xl">
+          <div className="p-3 bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 rounded-xl">
             <FiCreditCard className="w-6 h-6" />
           </div>
           <div>
@@ -167,7 +167,7 @@ export default function PatientDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-purple-50 dark:bg-purple-950/30 text-purple-650 dark:text-purple-400 rounded-xl">
+          <div className="p-3 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 rounded-xl">
             <FiActivity className="w-6 h-6" />
           </div>
           <div>
@@ -182,7 +182,7 @@ export default function PatientDashboard() {
         {/* Gemini AI Diagnostic Assistant */}
         <div className="lg:col-span-7 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm space-y-6">
           <div className="flex items-center space-x-2 border-b border-slate-100 dark:border-slate-800 pb-3">
-            <div className="p-2 bg-purple-50 dark:bg-purple-950/20 text-purple-650 dark:text-purple-400 rounded-lg">
+            <div className="p-2 bg-purple-50 dark:bg-purple-950/20 text-purple-600 dark:text-purple-400 rounded-lg">
               <FiHelpCircle className="w-5 h-5" />
             </div>
             <div>
@@ -228,7 +228,7 @@ export default function PatientDashboard() {
             <div className="border border-purple-100 dark:border-purple-900/40 bg-purple-50/20 dark:bg-purple-950/10 rounded-2xl p-5 space-y-4 animate-fade-in text-sm">
               <div className="space-y-1">
                 <p className="text-xs font-bold text-purple-700 dark:text-purple-400">Medico AI Response:</p>
-                <p className="text-slate-650 dark:text-slate-350 italic">"{aiDiagnosis.empathy}"</p>
+                <p className="text-slate-600 dark:text-slate-400 italic">"{aiDiagnosis.empathy}"</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -246,12 +246,12 @@ export default function PatientDashboard() {
 
               <div className="space-y-1 pt-2">
                 <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Clinical Rationale</span>
-                <p className="text-slate-650 dark:text-slate-400 leading-relaxed text-xs">{aiDiagnosis.reason}</p>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs">{aiDiagnosis.reason}</p>
               </div>
 
               <div className="space-y-1 pt-2">
                 <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Self-Care Suggestions</span>
-                <p className="text-slate-650 dark:text-slate-400 leading-relaxed text-xs">{aiDiagnosis.advice}</p>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs">{aiDiagnosis.advice}</p>
               </div>
 
               <div className="border-t border-purple-100 dark:border-purple-900/30 pt-3 text-[10px] text-slate-400 italic">
@@ -284,7 +284,7 @@ export default function PatientDashboard() {
               className="flex items-center justify-between p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-emerald-500 dark:hover:border-emerald-400 transition-colors"
             >
               <div className="flex items-center space-x-3 text-left">
-                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-650 dark:text-emerald-400 rounded-xl">
+                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 rounded-xl">
                   <FiPlusCircle className="w-5 h-5" />
                 </div>
                 <div>
@@ -300,7 +300,7 @@ export default function PatientDashboard() {
               className="flex items-center justify-between p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-cyan-500 dark:hover:border-cyan-400 transition-colors"
             >
               <div className="flex items-center space-x-3 text-left">
-                <div className="p-3 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-650 dark:text-cyan-400 rounded-xl">
+                <div className="p-3 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 dark:text-cyan-400 rounded-xl">
                   <FiCalendar className="w-5 h-5" />
                 </div>
                 <div>

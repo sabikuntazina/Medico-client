@@ -145,10 +145,10 @@ export default function DoctorAppointments() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                 {appointments.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="font-semibold text-slate-900 dark:text-white">{app.patientName}</div>
-                      <div className="text-[10px] text-slate-450 truncate max-w-[150px]">{app.patientEmail}</div>
+                      <div className="text-[10px] text-slate-500 truncate max-w-[150px]">{app.patientEmail}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center text-xs text-slate-600 dark:text-slate-400">
@@ -167,7 +167,7 @@ export default function DoctorAppointments() {
                           app.appointmentStatus === "completed"
                             ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30"
                             : app.appointmentStatus === "accepted"
-                            ? "bg-cyan-50 text-cyan-755 dark:bg-cyan-950/30"
+                            ? "bg-cyan-50 text-cyan-700 dark:bg-cyan-950/30"
                             : app.appointmentStatus === "rejected"
                             ? "bg-red-50 text-red-700 dark:bg-red-950/30"
                             : "bg-amber-50 text-amber-700 dark:bg-amber-950/30"
@@ -206,7 +206,7 @@ export default function DoctorAppointments() {
                       {app.paymentStatus === "paid" && app.appointmentStatus === "accepted" && (
                         <button
                           onClick={() => handleMarkCompleted(app._id, app.patientId)}
-                          className="inline-flex items-center rounded-xl bg-indigo-650 hover:bg-indigo-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
+                          className="inline-flex items-center rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
                         >
                           <FiCheckCircle className="mr-1" /> Mark Completed
                         </button>

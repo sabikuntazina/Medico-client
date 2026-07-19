@@ -78,7 +78,7 @@ export default function DoctorDashboard() {
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-650 dark:text-emerald-400 rounded-xl">
+          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
             <FiUsers className="w-6 h-6" />
           </div>
           <div>
@@ -88,7 +88,7 @@ export default function DoctorDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 text-cyan-650 dark:text-cyan-400 rounded-xl">
+          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-400 rounded-xl">
             <FiCalendar className="w-6 h-6" />
           </div>
           <div>
@@ -118,14 +118,14 @@ export default function DoctorDashboard() {
             <h2 className="text-base font-bold text-slate-900 dark:text-white">Today's Appointments</h2>
             <Link 
               href="/dashboard/doctor/appointments" 
-              className="text-xs font-semibold text-emerald-600 dark:text-emerald-455 hover:underline flex items-center"
+              className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center"
             >
               All Appointments <FiArrowRight className="ml-1" />
             </Link>
           </div>
 
           {todaysAppointments.length > 0 ? (
-            <div className="space-y-4 text-xs font-semibold text-slate-650">
+            <div className="space-y-4 text-xs font-semibold text-slate-600">
               {todaysAppointments.map((app) => (
                 <div 
                   key={app._id} 
@@ -134,7 +134,7 @@ export default function DoctorDashboard() {
                   <div>
                     <h4 className="font-bold text-sm text-slate-900 dark:text-white">{app.patientName}</h4>
                     <p className="text-[10px] text-slate-400 mt-0.5">{app.patientEmail}</p>
-                    <p className="text-[10px] text-slate-450 mt-1 flex items-center">
+                    <p className="text-[10px] text-slate-500 mt-1 flex items-center">
                       <FiClock className="mr-1" /> {app.appointmentTime}
                     </p>
                   </div>
@@ -145,7 +145,7 @@ export default function DoctorDashboard() {
               ))}
             </div>
           ) : (
-            <p className="text-xs text-slate-450 italic py-6 text-center">
+            <p className="text-xs text-slate-500 italic py-6 text-center">
               No appointments scheduled for today.
             </p>
           )}
@@ -163,7 +163,7 @@ export default function DoctorDashboard() {
               className="flex items-center justify-between p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-emerald-500 dark:hover:border-emerald-400 transition-colors"
             >
               <div className="flex items-center space-x-3 text-left">
-                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-650 dark:text-emerald-450 rounded-xl">
+                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-450 rounded-xl">
                   <FiClock className="w-5 h-5" />
                 </div>
                 <div>
@@ -171,7 +171,7 @@ export default function DoctorDashboard() {
                   <p className="text-[10px] text-slate-400">Set active days and slots</p>
                 </div>
               </div>
-              <FiArrowRight className="text-slate-450" />
+              <FiArrowRight className="text-slate-500" />
             </Link>
 
             <Link
@@ -179,7 +179,7 @@ export default function DoctorDashboard() {
               className="flex items-center justify-between p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:border-cyan-500 dark:hover:border-cyan-400 transition-colors"
             >
               <div className="flex items-center space-x-3 text-left">
-                <div className="p-3 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-650 dark:text-cyan-450 rounded-xl">
+                <div className="p-3 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 dark:text-cyan-450 rounded-xl">
                   <FiSettings className="w-5 h-5" />
                 </div>
                 <div>
@@ -187,7 +187,7 @@ export default function DoctorDashboard() {
                   <p className="text-[10px] text-slate-400">Add credentials & biography</p>
                 </div>
               </div>
-              <FiArrowRight className="text-slate-450" />
+              <FiArrowRight className="text-slate-500" />
             </Link>
           </div>
         </div>

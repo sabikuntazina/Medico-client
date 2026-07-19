@@ -154,7 +154,7 @@ export default function DoctorProfile() {
               ) : uploadingImage ? (
                 <FiLoader className="w-6 h-6 text-emerald-500 animate-spin" />
               ) : (
-                <FiCamera className="w-6 h-6 text-slate-450" />
+                <FiCamera className="w-6 h-6 text-slate-500" />
               )}
             </div>
             <label className="absolute -bottom-2 -right-2 p-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl cursor-pointer shadow-md transition-colors">
@@ -163,8 +163,8 @@ export default function DoctorProfile() {
             </label>
           </div>
           <div>
-            <h4 className="font-bold text-sm text-slate-905 dark:text-white">Profile Photo</h4>
-            <p className="text-xs text-slate-450 mt-1 max-w-xs">Upload a clear clinical portrait image. Links directly to public practitioner card.</p>
+            <h4 className="font-bold text-sm text-slate-900 dark:text-white">Profile Photo</h4>
+            <p className="text-xs text-slate-500 mt-1 max-w-xs">Upload a clear clinical portrait image. Links directly to public practitioner card.</p>
           </div>
         </div>
 

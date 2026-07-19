@@ -165,7 +165,7 @@ export default function Navbar() {
               className={`block rounded-lg px-3 py-2 text-base font-medium ${
                 pathname === link.href
                   ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-400"
-                  : "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-850"
+                  : "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800"
               }`}
             >
               {link.name}

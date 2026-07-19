@@ -125,7 +125,7 @@ export default function AdminDashboard() {
       {/* Counters Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-650 dark:text-emerald-400 rounded-xl">
+          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
             <FiUsers className="w-6 h-6" />
           </div>
           <div>
@@ -135,7 +135,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 text-cyan-650 dark:text-cyan-400 rounded-xl">
+          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-400 rounded-xl">
             <FaUserMd className="w-6 h-6" />
           </div>
           <div>
@@ -145,7 +145,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-indigo-50 dark:bg-indigo-950/30 text-indigo-650 dark:text-indigo-400 rounded-xl">
+          <div className="p-3 bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 rounded-xl">
             <FiCalendar className="w-6 h-6" />
           </div>
           <div>
@@ -155,7 +155,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm flex items-center space-x-4">
-          <div className="p-3 bg-purple-50 dark:bg-purple-950/30 text-purple-650 dark:text-purple-400 rounded-xl">
+          <div className="p-3 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 rounded-xl">
             <FiDollarSign className="w-6 h-6" />
           </div>
           <div>

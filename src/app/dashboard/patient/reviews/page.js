@@ -285,7 +285,7 @@ export default function PatientReviews() {
               </button>
             </form>
           ) : (
-            <p className="text-xs text-slate-450 italic">
+            <p className="text-xs text-slate-500 italic">
               You must complete and pay for at least one appointment before you can write a review.
             </p>
           )}
@@ -306,7 +306,7 @@ export default function PatientReviews() {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-bold text-sm text-slate-850 dark:text-white">Review ID / Details</h4>
+                      <h4 className="font-bold text-sm text-slate-800 dark:text-white">Review ID / Details</h4>
                       <div className="flex items-center text-amber-500 text-xs font-bold mt-1">
                         {[...Array(5)].map((_, i) => (
                           <FiStar 
@@ -330,7 +330,7 @@ export default function PatientReviews() {
                       </button>
                       <button
                         onClick={() => handleDelete(rev._id)}
-                        className="p-2 rounded-lg bg-slate-50 hover:bg-red-50 hover:text-red-650 dark:bg-slate-950 dark:hover:bg-red-950/20 dark:hover:text-red-400 transition-colors text-slate-500 cursor-pointer"
+                        className="p-2 rounded-lg bg-slate-50 hover:bg-red-50 hover:text-red-600 dark:bg-slate-950 dark:hover:bg-red-950/20 dark:hover:text-red-400 transition-colors text-slate-500 cursor-pointer"
                         title="Delete Review"
                       >
                         <FiTrash2 className="w-3.5 h-3.5" />

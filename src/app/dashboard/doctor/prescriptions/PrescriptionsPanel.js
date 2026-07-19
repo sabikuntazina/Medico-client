@@ -185,7 +185,7 @@ export default function PrescriptionsPanel() {
         {appointmentId && patientId && (
           <div className="lg:col-span-12 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm space-y-5">
             <h2 className="flex items-center text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider border-b border-slate-100 dark:border-slate-850 pb-2">
-              <FiPlusCircle className="mr-1.5 text-emerald-650" /> Log Treatment Plan
+              <FiPlusCircle className="mr-1.5 text-emerald-600" /> Log Treatment Plan
             </h2>
 
             <form onSubmit={handleCreatePrescription} className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -269,7 +269,7 @@ export default function PrescriptionsPanel() {
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <h4 className="font-bold text-sm text-slate-905 dark:text-white">Patient Record</h4>
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-white">Patient Record</h4>
                       <p className="text-[10px] text-slate-400 mt-0.5">
                         Logged: {new Date(pres.createdAt).toLocaleDateString()}
                       </p>
@@ -291,14 +291,14 @@ export default function PrescriptionsPanel() {
                     </div>
                     <div>
                       <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Medications</span>
-                      <p className="font-mono text-slate-650 dark:text-slate-400 mt-0.5 whitespace-pre-wrap text-[11px] line-clamp-3 bg-slate-50 dark:bg-slate-950 p-2.5 rounded-xl border border-slate-100 dark:border-slate-900 leading-relaxed">
+                      <p className="font-mono text-slate-600 dark:text-slate-400 mt-0.5 whitespace-pre-wrap text-[11px] line-clamp-3 bg-slate-50 dark:bg-slate-950 p-2.5 rounded-xl border border-slate-100 dark:border-slate-900 leading-relaxed">
                         {pres.medications}
                       </p>
                     </div>
                     {pres.notes && (
                       <div>
                         <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Notes</span>
-                        <p className="text-slate-500 dark:text-slate-450 mt-0.5 line-clamp-2 leading-relaxed">{pres.notes}</p>
+                        <p className="text-slate-500 dark:text-slate-500 mt-0.5 line-clamp-2 leading-relaxed">{pres.notes}</p>
                       </div>
                     )}
                   </div>

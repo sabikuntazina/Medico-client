@@ -121,7 +121,7 @@ export default function DoctorsList() {
                   className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     specialization === spec
                       ? "bg-emerald-600 text-white shadow-sm dark:bg-emerald-500"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-850 dark:hover:text-white"
+                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                   }`}
                 >
                   {spec}
@@ -176,8 +176,8 @@ export default function DoctorsList() {
                   onClick={() => setLayoutMode("card")}
                   className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                     layoutMode === "card"
-                      ? "bg-white text-emerald-600 dark:bg-slate-900 dark:text-emerald-455 shadow-sm"
-                      : "text-slate-400 hover:text-slate-650"
+                      ? "bg-white text-emerald-600 dark:bg-slate-900 dark:text-emerald-400 shadow-sm"
+                      : "text-slate-400 hover:text-slate-700"
                   }`}
                   title="Card Grid"
                 >
@@ -187,8 +187,8 @@ export default function DoctorsList() {
                   onClick={() => setLayoutMode("table")}
                   className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                     layoutMode === "table"
-                      ? "bg-white text-emerald-600 dark:bg-slate-900 dark:text-emerald-455 shadow-sm"
-                      : "text-slate-400 hover:text-slate-650"
+                      ? "bg-white text-emerald-600 dark:bg-slate-900 dark:text-emerald-400 shadow-sm"
+                      : "text-slate-400 hover:text-slate-700"
                   }`}
                   title="List Table"
                 >
@@ -271,7 +271,7 @@ export default function DoctorsList() {
                     </thead>
                     <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                       {doctors.map((doc) => (
-                        <tr key={doc._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                        <tr key={doc._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                           <td className="px-6 py-4 whitespace-nowrap flex items-center space-x-3">
                             <img
                               src={doc.profileImage || `https://api.dicebear.com/7.x/adventurer/svg?seed=${doc.doctorName}`}
@@ -280,7 +280,7 @@ export default function DoctorsList() {
                             />
                             <div>
                               <div className="font-semibold text-slate-900 dark:text-white">{doc.doctorName}</div>
-                              <div className="text-[10px] text-slate-450">{doc.experience} Years Exp</div>
+                              <div className="text-[10px] text-slate-500">{doc.experience} Years Exp</div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -338,7 +338,7 @@ export default function DoctorsList() {
                   className={`w-9 h-9 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     currentPage === index + 1
                       ? "bg-emerald-600 text-white shadow-sm dark:bg-emerald-500"
-                      : "border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-350"
+                      : "border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
                   }`}
                 >
                   {index + 1}

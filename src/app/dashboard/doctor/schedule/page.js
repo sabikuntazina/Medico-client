@@ -139,7 +139,7 @@ export default function DoctorSchedule() {
                   className={`flex items-center justify-between p-3.5 border rounded-xl cursor-pointer transition-colors ${
                     isChecked
                       ? "border-emerald-500 bg-emerald-50/40 dark:bg-emerald-950/20 text-slate-900 dark:text-white"
-                      : "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-600 dark:text-slate-400"
+                      : "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
                   }`}
                 >
                   <span className="text-sm font-semibold">{day}</span>
@@ -205,7 +205,7 @@ export default function DoctorSchedule() {
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-slate-450 italic py-4">No consulting slots added yet. Please add a slot above.</p>
+                <p className="text-xs text-slate-500 italic py-4">No consulting slots added yet. Please add a slot above.</p>
               )}
             </div>
           </div>

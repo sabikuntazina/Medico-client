@@ -57,14 +57,14 @@ export default function PatientPayments() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                 {payments.map((pay) => (
-                  <tr key={pay._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                  <tr key={pay._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                     <td className="px-6 py-4 whitespace-nowrap font-mono text-xs text-slate-900 dark:text-white flex items-center">
                       <FiHash className="mr-1.5 text-slate-400 shrink-0" /> {pay.transactionId}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap font-semibold text-slate-700 dark:text-slate-350">
+                    <td className="px-6 py-4 whitespace-nowrap font-semibold text-slate-700 dark:text-slate-400">
                       {pay.doctorName || "Specialist Consultant"}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-slate-650 dark:text-slate-400">
+                    <td className="px-6 py-4 whitespace-nowrap text-slate-600 dark:text-slate-400">
                       <div className="flex items-center text-xs">
                         <FiCalendar className="mr-1.5 text-slate-400" />
                         {new Date(pay.paymentDate).toLocaleDateString("en-US", {

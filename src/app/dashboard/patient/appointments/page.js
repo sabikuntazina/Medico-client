@@ -180,13 +180,13 @@ export default function PatientAppointments() {
               </div>
               <div class="border-t border-slate-200/60 pt-3">
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Medications</p>
-                <p class="text-slate-650 leading-relaxed font-mono text-xs mt-0.5">${data.medications}</p>
+                <p class="text-slate-600 leading-relaxed font-mono text-xs mt-0.5">${data.medications}</p>
               </div>
               <div class="border-t border-slate-200/60 pt-3">
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Doctor Notes</p>
-                <p class="text-slate-650 leading-relaxed text-xs mt-0.5">${data.notes || "No special notes."}</p>
+                <p class="text-slate-600 leading-relaxed text-xs mt-0.5">${data.notes || "No special notes."}</p>
               </div>
-              <div class="border-t border-slate-200/60 pt-3 text-[10px] text-slate-450 italic text-center">
+              <div class="border-t border-slate-200/60 pt-3 text-[10px] text-slate-500 italic text-center">
                 Date: ${new Date(data.createdAt).toLocaleDateString()}
               </div>
             </div>
@@ -237,16 +237,16 @@ export default function PatientAppointments() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                 {appointments.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="font-semibold text-slate-900 dark:text-white">{app.doctorName}</div>
-                      <div className="text-[10px] text-slate-450 uppercase tracking-wide font-medium">{app.specialization}</div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-wide font-medium">{app.specialization}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center text-xs text-slate-650 dark:text-slate-350">
+                      <div className="flex items-center text-xs text-slate-600 dark:text-slate-400">
                         <FiCalendar className="mr-1.5 shrink-0" /> {app.appointmentDate}
                       </div>
-                      <div className="flex items-center text-xs text-slate-650 dark:text-slate-350 mt-1">
+                      <div className="flex items-center text-xs text-slate-600 dark:text-slate-400 mt-1">
                         <FiClock className="mr-1.5 shrink-0" /> {app.appointmentTime}
                       </div>
                     </td>
@@ -255,7 +255,7 @@ export default function PatientAppointments() {
                         app.appointmentStatus === "completed"
                           ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30"
                           : app.appointmentStatus === "accepted"
-                          ? "bg-cyan-50 text-cyan-755 dark:bg-cyan-950/30"
+                          ? "bg-cyan-50 text-cyan-700 dark:bg-cyan-950/30"
                           : app.appointmentStatus === "rejected"
                           ? "bg-red-50 text-red-700 dark:bg-red-950/30"
                           : "bg-amber-50 text-amber-700 dark:bg-amber-950/30"
@@ -288,13 +288,13 @@ export default function PatientAppointments() {
                           </button>
                           <button
                             onClick={() => handleReschedule(app._id, app.appointmentDate, app.appointmentTime)}
-                            className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-350 transition-colors cursor-pointer"
+                            className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-400 transition-colors cursor-pointer"
                           >
                             Reschedule
                           </button>
                           <button
                             onClick={() => handleCancel(app._id)}
-                            className="inline-flex items-center rounded-xl border border-red-200 hover:bg-red-50 text-red-650 px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
+                            className="inline-flex items-center rounded-xl border border-red-200 hover:bg-red-50 text-red-600 px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
                           >
                             <FiTrash2 className="mr-1" /> Cancel
                           </button>
@@ -304,14 +304,14 @@ export default function PatientAppointments() {
                       {app.paymentStatus === "paid" && app.appointmentStatus === "completed" && (
                         <button
                           onClick={() => handleViewPrescription(app._id)}
-                          className="inline-flex items-center rounded-xl bg-indigo-650 hover:bg-indigo-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
+                          className="inline-flex items-center rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
                         >
                           <FiFileText className="mr-1" /> View Prescription
                         </button>
                       )}
 
                       {app.paymentStatus === "paid" && app.appointmentStatus !== "completed" && (
-                        <span className="text-xs text-slate-450 italic">Waiting Consultation</span>
+                        <span className="text-xs text-slate-500 italic">Waiting Consultation</span>
                       )}
                     </td>
                   </tr>

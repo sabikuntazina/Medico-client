@@ -140,7 +140,7 @@ export default function AdminUsers() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-sm">
                 {users.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/10">
+                  <tr key={item.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                     <td className="px-6 py-4 whitespace-nowrap flex items-center space-x-3">
                       <img
                         src={item.image || item.photo || `https://api.dicebear.com/7.x/adventurer/svg?seed=${item.name}`}
@@ -149,7 +149,7 @@ export default function AdminUsers() {
                       />
                       <div className="font-semibold text-slate-900 dark:text-white">{item.name}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-slate-650 dark:text-slate-400">
+                    <td className="px-6 py-4 whitespace-nowrap text-slate-600 dark:text-slate-400">
                       {item.email}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -161,9 +161,9 @@ export default function AdminUsers() {
                         {item.role}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-slate-650 dark:text-slate-400 text-xs">
+                    <td className="px-6 py-4 whitespace-nowrap text-slate-600 dark:text-slate-400 text-xs">
                       <div>{item.phone || "No phone"}</div>
-                      <div className="text-[10px] text-slate-450 uppercase mt-0.5">{item.gender || "Not specified"}</div>
+                      <div className="text-[10px] text-slate-500 uppercase mt-0.5">{item.gender || "Not specified"}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <span className={`inline-block text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
@@ -180,7 +180,7 @@ export default function AdminUsers() {
                         className={`inline-flex items-center rounded-xl px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer ${
                           item.status === "suspended"
                             ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400"
-                            : "bg-amber-50 hover:bg-amber-100 text-amber-705 dark:bg-amber-950/30 dark:text-amber-400"
+                            : "bg-amber-50 hover:bg-amber-100 text-amber-700 dark:bg-amber-950/30 dark:text-amber-400"
                         }`}
                       >
                         {item.status === "suspended" ? (
@@ -196,7 +196,7 @@ export default function AdminUsers() {
                       
                       <button
                         onClick={() => handleDelete(item.id)}
-                        className="inline-flex items-center rounded-xl bg-red-50 hover:bg-red-100 text-red-650 px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
+                        className="inline-flex items-center rounded-xl bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
                       >
                         <FiTrash2 className="mr-1" /> Delete
                       </button>
