@@ -63,7 +63,8 @@ export default function DashboardLayout({ children }) {
         toast: true,
         position: "top-end"
       });
-      router.push("/");
+      router.push("/login");
+      router.refresh();
     } catch (err) {
       console.error("Signout error:", err);
     }

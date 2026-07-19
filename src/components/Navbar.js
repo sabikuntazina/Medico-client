@@ -13,29 +13,34 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   
-  const { data: session, isPending } = useSession();
+const { data: session, isPending, setUser } = useSession();
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleLogout = async () => {
-    try {
-      clearAuthToken();
-      await signOut().catch(() => {});
-      setIsProfileOpen(false);
-      Swal.fire({
-        icon: "success",
-        title: "Logged Out",
-        text: "You have successfully signed out.",
-        timer: 1500,
-        showConfirmButton: false,
-        toast: true,
-        position: "top-end"
-      });
-      router.push("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
+const handleLogout = async () => {
+  try {
+    clearAuthToken();
+    await signOut().catch(() => {});
+
+    setUser(null);
+
+    setIsProfileOpen(false);
+
+    Swal.fire({
+      icon: "success",
+      title: "Logged Out",
+      text: "You have successfully signed out.",
+      timer: 1500,
+      showConfirmButton: false,
+      toast: true,
+      position: "top-end"
+    });
+
+    router.replace("/");
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   const navLinks = [
     { name: "Home", href: "/" },
