@@ -18,23 +18,23 @@ export function AuthProvider({ children }) {
     if (storedUser && token) {
       // Verify token is still valid against the server
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      fetch(`${apiUrl}/api/auth/get-session`, {
+      fetch(`${apiUrl}/api/users/me`, {
         headers: {
-          Authorization: `Bearer ${token}`,
-          Cookie: `better-auth.session_token=${token}`
+          Authorization: `Bearer ${token}`
         },
         credentials: "include"
       })
         .then(r => r.json())
         .then(data => {
-          if (data && data.user) {
-            setUser(data.user);
+          if (data && data.id) {
+            setUser(data);
           } else {
             // Token expired or invalid — clear it
             clearAuthToken();
             setUser(null);
           }
         })
+
         .catch(() => {
           // Network error — trust localStorage for now
           setUser(storedUser);
