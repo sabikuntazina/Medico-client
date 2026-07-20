@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn, saveAuthToken } from "../../lib/auth-client";
+import { signIn, saveAuthToken, authClient } from "../../lib/auth-client";
 import { useSession } from "../../lib/auth-context";
 import Swal from "sweetalert2";
 import { FiMail, FiLock, FiLoader } from "react-icons/fi";
