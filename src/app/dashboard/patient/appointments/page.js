@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiCalendar, FiClock, FiDollarSign, FiFileText, FiTrash2, FiLoader } from "react-icons/fi";
+import { authFetch } from "../../../../lib/auth-client";
 import Swal from "sweetalert2";
 
 export default function PatientAppointments() {
@@ -13,9 +14,7 @@ export default function PatientAppointments() {
   const fetchAppointments = async () => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/appointments/patient`, {
-        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
-      });
+      const response = await authFetch(`${apiUrl}/api/appointments/patient`);
       if (response.ok) {
         const data = await response.json();
         setAppointments(data || []);
@@ -44,9 +43,8 @@ export default function PatientAppointments() {
       if (result.isConfirmed) {
         try {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-          const response = await fetch(`${apiUrl}/api/appointments/${id}`, {
-            method: "DELETE",
-            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
+          const response = await authFetch(`${apiUrl}/api/appointments/${id}`, {
+            method: "DELETE"
           });
           if (response.ok) {
             Swal.fire({
@@ -74,10 +72,8 @@ export default function PatientAppointments() {
     setPayingId(appointmentId);
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/payments/create-checkout-session`, {
+      const response = await authFetch(`${apiUrl}/api/payments/create-checkout-session`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
         body: JSON.stringify({ appointmentId })
       });
       const data = await response.json();
@@ -132,10 +128,8 @@ export default function PatientAppointments() {
         const { appointmentDate, appointmentTime } = result.value;
         try {
           const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-          const response = await fetch(`${apiUrl}/api/appointments/${id}/reschedule`, {
+          const response = await authFetch(`${apiUrl}/api/appointments/${id}/reschedule`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) },
             body: JSON.stringify({ appointmentDate, appointmentTime })
           });
           if (response.ok) {
@@ -161,9 +155,7 @@ export default function PatientAppointments() {
   const handleViewPrescription = async (appointmentId) => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/prescriptions/appointment/${appointmentId}`, {
-        credentials: "include", headers: { ...(typeof localStorage !== "undefined" && localStorage.getItem("medico_auth_token") ? { Authorization: "Bearer " + localStorage.getItem("medico_auth_token") } : {}) }
-      });
+      const response = await authFetch(`${apiUrl}/api/prescriptions/appointment/${appointmentId}`);
       if (response.ok) {
         const data = await response.json();
         Swal.fire({

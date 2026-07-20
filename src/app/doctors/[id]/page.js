@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "../../../lib/auth-context";
+import { authFetch } from "../../../lib/auth-client";
 import Swal from "sweetalert2";
 import { 
   FiHeart, 
@@ -124,12 +125,8 @@ export default function DoctorDetails() {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       
       // Step 1: Book the appointment
-      const response = await fetch(`${apiUrl}/api/appointments/book`, {
+      const response = await authFetch(`${apiUrl}/api/appointments/book`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
         body: JSON.stringify({
           doctorId: doctor._id.toString(),
           doctorName: doctor.doctorName,
@@ -149,10 +146,8 @@ export default function DoctorDetails() {
       const appointmentId = resData.appointment._id;
 
       // Step 2: Create Stripe Checkout Session and get the URL
-      const checkoutRes = await fetch(`${apiUrl}/api/payments/create-checkout-session`, {
+      const checkoutRes = await authFetch(`${apiUrl}/api/payments/create-checkout-session`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({ appointmentId })
       });
 
