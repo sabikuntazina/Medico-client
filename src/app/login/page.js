@@ -3,11 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn, saveAuthToken, authClient } from "../../lib/auth-client";
+import { saveAuthToken } from "../../lib/auth-client";
 import { useSession } from "../../lib/auth-context";
 import Swal from "sweetalert2";
 import { FiMail, FiLock, FiLoader } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,7 +23,7 @@ export default function Login() {
       Swal.fire({
         icon: "warning",
         title: "Missing Fields",
-        text: "Please enter your email and password."
+        text: "Please enter your email and password.",
       });
       return;
     }
@@ -36,9 +35,9 @@ export default function Login() {
       const response = await fetch(`${apiUrl}/api/auth/sign-in/email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
-      
+
       const data = await response.json();
 
       if (!response.ok || data.error) {
@@ -47,7 +46,7 @@ export default function Login() {
 
       // ── Save token to localStorage for cross-domain auth ──
       const token = data.token || data?.session?.token;
-      const user  = data.user;
+      const user = data.user;
       if (token && user) {
         saveAuthToken(token, user);
         if (setUser) setUser(user); // Force React Context to update immediately
@@ -62,7 +61,7 @@ export default function Login() {
         timer: 1500,
         showConfirmButton: false,
         toast: true,
-        position: "top-end"
+        position: "top-end",
       });
 
       router.push(`/dashboard/${user.role}`);
@@ -71,23 +70,16 @@ export default function Login() {
       Swal.fire({
         icon: "error",
         title: "Login Failed",
-        text: err.message || "Invalid email or password."
+        text: err.message || "Invalid email or password.",
       });
     } finally {
       setLoading(false);
     }
   };
 
-    const  handleGoogleLogin = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-    })
-  }
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-6">
       <div className="max-w-md w-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl relative overflow-hidden transition-all">
-        
         {/* Decorative circle */}
         <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl" />
 
@@ -148,34 +140,21 @@ export default function Login() {
             disabled={loading}
             className="w-full flex items-center justify-center py-3 px-4 border border-transparent rounded-xl shadow-md text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-4 cursor-pointer"
           >
-            {loading ? <FiLoader className="animate-spin w-5 h-5 mr-2" /> : "Sign In"}
+            {loading ? (
+              <FiLoader className="animate-spin w-5 h-5 mr-2" />
+            ) : (
+              "Sign In"
+            )}
           </button>
         </form>
-
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-white dark:bg-slate-900 px-3 text-slate-500 dark:text-slate-400">
-              Or continue with
-            </span>
-          </div>
-        </div>
-
-        {/* Social login */}
-        <button
-          onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm text-sm font-semibold text-slate-700 dark:text-slate-300 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
-        >
-          <FcGoogle className="w-5 h-5 mr-2" />
-          Google
-        </button>
 
         <div className="text-center mt-6">
           <p className="text-sm text-slate-500 dark:text-slate-400">
             New to Medico Connect?{" "}
-            <Link href="/register" className="font-semibold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300">
+            <Link
+              href="/register"
+              className="font-semibold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+            >
               Create an Account
             </Link>
           </p>
