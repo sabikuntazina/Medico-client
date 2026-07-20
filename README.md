@@ -1,12 +1,5 @@
 # Medico Connect 🏥
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-18-blue)
-![Next.js](https://img.shields.io/badge/Next.js-15-black)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-cyan)
-![Node.js](https://img.shields.io/badge/Node.js-Express-green)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)
-
 A premium, state-of-the-art medical consultation platform bridging the gap between patients and doctors. Medico Connect offers seamless appointment booking, a comprehensive role-based dashboard (Admin, Doctor, Patient), secure Stripe payments, and an intelligent AI Medical Assistant for preliminary health insights.
 
 ### 🌐 [Live Demo](https://medico-client-ochre.vercel.app/)
