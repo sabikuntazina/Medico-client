@@ -78,21 +78,11 @@ export default function Login() {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    try {
-      await signIn.social({
-        provider: "google",
-        callbackURL: `${window.location.origin}/dashboard`
-      });
-    } catch (error) {
-      console.error("Google sign in failed:", error);
-      Swal.fire({
-        icon: "error",
-        title: "OAuth Failed",
-        text: "Could not log in with Google."
-      });
-    }
-  };
+    const  handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    })
+  }
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-6">
